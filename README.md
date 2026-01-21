@@ -1,3 +1,8 @@
+Parallel Implementation of Sub-quadratic time
+Approximate Counting of 0-1 Knapsack Problem
+
+
+
 The 0-1 Knapsack problem serves as a widely studied example
 of NP-hard problems, arising in optimality, scheduling, and resource
 allocation. While traditional algorithms involving dynamic programming
