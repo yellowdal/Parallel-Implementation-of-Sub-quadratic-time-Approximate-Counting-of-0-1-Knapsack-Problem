@@ -1,0 +1,248 @@
+===== CUDA SCALING RESULTS =====
+
+=== RUN: 4096 ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.438 ms
+KERN = 0.047 ms
+KERN-only = 0.045 ms
+IFFT = 0.223 ms
+D2H  = 0.053 ms
+GPU wall (cuda events sum) = 0.000764 s
+CPU (naive) = 0.022296 s
+GPU wall measured (host) = 0.437887 s
+Speedup (CPU/GPU_event_wall) = 29.19x
+Speedup (CPU/GPU_host_time) = 0.05x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 1.591616e-12 RMS: 2.998834e-13 RelRMS: 2.553213e-15
+
+--- Summary ---
+n=1000 cap=200 na=4096 nb=4096 total_nc=8191
+time_cpu=0.022296s time_gpu_eventsum=0.000764s time_gpu_host=0.437887s program_time=0.460532s
+
+=== RUN: 8192 ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.969 ms
+KERN = 0.033 ms
+KERN-only = 0.031 ms
+IFFT = 0.487 ms
+D2H  = 0.064 ms
+GPU wall (cuda events sum) = 0.001557 s
+CPU (naive) = 0.093973 s
+GPU wall measured (host) = 0.113551 s
+Speedup (CPU/GPU_event_wall) = 60.37x
+Speedup (CPU/GPU_host_time) = 0.83x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 2.131628e-12 RMS: 3.629136e-13 RelRMS: 2.735043e-15
+
+--- Summary ---
+n=1000 cap=200 na=8192 nb=8192 total_nc=16383
+time_cpu=0.093973s time_gpu_eventsum=0.001557s time_gpu_host=0.113551s program_time=0.208119s
+
+=== RUN: 16384 ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.336 ms
+KERN = 0.034 ms
+KERN-only = 0.032 ms
+IFFT = 0.171 ms
+D2H  = 0.119 ms
+GPU wall (cuda events sum) = 0.000663 s
+CPU (naive) = 0.352608 s
+GPU wall measured (host) = 0.082581 s
+Speedup (CPU/GPU_event_wall) = 531.86x
+Speedup (CPU/GPU_host_time) = 4.27x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 3.311129e-12 RMS: 5.087448e-13 RelRMS: 3.918382e-15
+
+--- Summary ---
+n=1000 cap=200 na=16384 nb=16384 total_nc=32767
+time_cpu=0.352608s time_gpu_eventsum=0.000663s time_gpu_host=0.082581s program_time=0.435988s
+
+=== RUN: 32768 ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.363 ms
+KERN = 0.066 ms
+KERN-only = 0.051 ms
+IFFT = 0.184 ms
+D2H  = 0.261 ms
+GPU wall (cuda events sum) = 0.000877 s
+CPU (naive) = 1.416925 s
+GPU wall measured (host) = 0.105999 s
+Speedup (CPU/GPU_event_wall) = 1615.25x
+Speedup (CPU/GPU_host_time) = 13.37x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 4.177991e-12 RMS: 6.941768e-13 RelRMS: 5.699062e-15
+
+--- Summary ---
+n=1000 cap=200 na=32768 nb=32768 total_nc=65535
+time_cpu=1.416925s time_gpu_eventsum=0.000877s time_gpu_host=0.105999s program_time=1.524368s
+
+=== RUN: 65536 ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.419 ms
+KERN = 0.066 ms
+KERN-only = 0.064 ms
+IFFT = 0.211 ms
+D2H  = 0.454 ms
+GPU wall (cuda events sum) = 0.001153 s
+CPU (naive) = 5.702959 s
+GPU wall measured (host) = 0.101369 s
+Speedup (CPU/GPU_event_wall) = 4948.01x
+Speedup (CPU/GPU_host_time) = 56.26x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 5.911716e-12 RMS: 9.674942e-13 RelRMS: 8.630644e-15
+
+--- Summary ---
+n=1000 cap=200 na=65536 nb=65536 total_nc=131071
+time_cpu=5.702959s time_gpu_eventsum=0.001153s time_gpu_host=0.101369s program_time=5.807098s
+
+
