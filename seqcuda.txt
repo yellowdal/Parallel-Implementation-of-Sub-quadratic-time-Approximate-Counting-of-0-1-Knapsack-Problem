@@ -1,0 +1,18 @@
+At n = 1000
+For Sequential Code 
+BUILD TIME = 240 msec
+For CUDA CODE
+TIME = 0.034 msec
+
+At n = 5000
+For Sequential Code 
+BUILD TIME = 482.18 msec
+For CUDA CODE
+TIME = 0.043 msec
+
+
+At n = 10000
+For Sequential Code 
+BUILD TIME = 2000.0 msec
+For CUDA CODE
+TIME = 0.042 msec

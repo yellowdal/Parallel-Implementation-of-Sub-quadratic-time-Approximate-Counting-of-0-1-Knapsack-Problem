@@ -1,0 +1,359 @@
+--- n-scaling Sweep Mode ---
+Mode = Deterministic
+
+>>> Running n = 100
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+Grouping: n=100 groups=10 base_group_size=10
+Group 0 built: size=2
+Group 1 built: size=2
+Group 2 built: size=2
+Group 3 built: size=2
+Group 4 built: size=3
+Group 5 built: size=1
+Group 6 built: size=1
+Group 7 built: size=2
+Group 8 built: size=2
+Group 9 built: size=2
+
+--- Result ---
+Non-empty groups merged: 10
+Approximate (scaled) count = 31
+[Summary] n=100 cap=200 eps=0.050 time=0.000300s final_n=5 gamma=0.010000 mode=det enum_merges=99 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.003314 s
+Final merge phase: 0.000300 s
+Total (build+merge): 0.003614 s
+------------------------
+
+>>> Running n = 200
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+Grouping: n=200 groups=15 base_group_size=14
+Group 0 built: size=3
+Group 1 built: size=5
+Group 2 built: size=4
+Group 3 built: size=4
+Group 4 built: size=2
+Group 5 built: size=3
+Group 6 built: size=4
+Group 7 built: size=3
+Group 8 built: size=2
+Group 9 built: size=3
+Group 10 built: size=2
+Group 11 built: size=2
+Group 12 built: size=3
+Group 13 built: size=2
+Group 14 built: size=2
+
+--- Result ---
+Non-empty groups merged: 15
+Approximate (scaled) count = 983
+[Summary] n=200 cap=200 eps=0.050 time=0.000157s final_n=15 gamma=0.010000 mode=det enum_merges=199 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.005635 s
+Final merge phase: 0.000157 s
+Total (build+merge): 0.005791 s
+------------------------
+
+>>> Running n = 400
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+Grouping: n=400 groups=20 base_group_size=20
+Group 0 built: size=5
+Group 1 built: size=6
+Group 2 built: size=6
+Group 3 built: size=4
+Group 4 built: size=6
+Group 5 built: size=5
+Group 6 built: size=3
+Group 7 built: size=3
+Group 8 built: size=3
+Group 9 built: size=4
+Group 10 built: size=3
+Group 11 built: size=2
+Group 12 built: size=3
+Group 13 built: size=3
+Group 14 built: size=3
+Group 15 built: size=2
+Group 16 built: size=3
+Group 17 built: size=2
+Group 18 built: size=3
+Group 19 built: size=3
+
+--- Result ---
+Non-empty groups merged: 20
+Approximate (scaled) count = 58256
+[Summary] n=400 cap=200 eps=0.050 time=0.000218s final_n=24 gamma=0.010000 mode=det enum_merges=399 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.004222 s
+Final merge phase: 0.000218 s
+Total (build+merge): 0.004440 s
+------------------------
+
+>>> Running n = 800
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+Grouping: n=800 groups=29 base_group_size=28
+Group 0 built: size=11
+Group 1 built: size=17
+Group 2 built: size=20
+Group 3 built: size=15
+Group 4 built: size=14
+Group 5 built: size=13
+Group 6 built: size=9
+Group 7 built: size=7
+Group 8 built: size=7
+Group 9 built: size=5
+Group 10 built: size=8
+Group 11 built: size=4
+Group 12 built: size=4
+Group 13 built: size=5
+Group 14 built: size=2
+Group 15 built: size=2
+Group 16 built: size=4
+Group 17 built: size=4
+Group 18 built: size=3
+Group 19 built: size=3
+Group 20 built: size=3
+Group 21 built: size=2
+Group 22 built: size=3
+Group 23 built: size=3
+Group 24 built: size=2
+Group 25 built: size=2
+Group 26 built: size=4
+Group 27 built: size=3
+Group 28 built: size=2
+
+--- Result ---
+Non-empty groups merged: 29
+Approximate (scaled) count = 13291830253
+[Summary] n=800 cap=200 eps=0.050 time=0.000331s final_n=52 gamma=0.010000 mode=det enum_merges=799 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.008559 s
+Final merge phase: 0.000331 s
+Total (build+merge): 0.008890 s
+------------------------
+
+>>> Running n = 1600
+Scaling: eps=0.0500 gamma=0.006250 scaled_capacity=32000 mode=deterministic
+Grouping: n=1600 groups=40 base_group_size=40
+Group 0 built: size=22
+Group 1 built: size=29
+Group 2 built: size=23
+Group 3 built: size=29
+Group 4 built: size=20
+Group 5 built: size=22
+Group 6 built: size=17
+Group 7 built: size=13
+Group 8 built: size=9
+Group 9 built: size=8
+Group 10 built: size=11
+Group 11 built: size=10
+Group 12 built: size=9
+Group 13 built: size=4
+Group 14 built: size=6
+Group 15 built: size=5
+Group 16 built: size=6
+Group 17 built: size=5
+Group 18 built: size=6
+Group 19 built: size=4
+Group 20 built: size=4
+Group 21 built: size=4
+Group 22 built: size=4
+Group 23 built: size=3
+Group 24 built: size=2
+Group 25 built: size=3
+Group 26 built: size=4
+Group 27 built: size=4
+Group 28 built: size=3
+Group 29 built: size=4
+Group 30 built: size=2
+Group 31 built: size=3
+Group 32 built: size=3
+Group 33 built: size=4
+Group 34 built: size=3
+Group 35 built: size=3
+Group 36 built: size=4
+Group 37 built: size=3
+Group 38 built: size=4
+Group 39 built: size=3
+
+--- Result ---
+Non-empty groups merged: 40
+Approximate (scaled) count = 11532512024128
+[Summary] n=1600 cap=200 eps=0.050 time=0.000692s final_n=60 gamma=0.006250 mode=det enum_merges=1599 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.027817 s
+Final merge phase: 0.000692 s
+Total (build+merge): 0.028509 s
+------------------------
+
+>>> Running n = 3200
+Scaling: eps=0.0500 gamma=0.003125 scaled_capacity=64000 mode=deterministic
+Grouping: n=3200 groups=57 base_group_size=57
+Group 0 built: size=25
+Group 1 built: size=33
+Group 2 built: size=37
+Group 3 built: size=37
+Group 4 built: size=38
+Group 5 built: size=32
+Group 6 built: size=23
+Group 7 built: size=21
+Group 8 built: size=20
+Group 9 built: size=16
+Group 10 built: size=18
+Group 11 built: size=11
+Group 12 built: size=13
+Group 13 built: size=12
+Group 14 built: size=10
+Group 15 built: size=11
+Group 16 built: size=9
+Group 17 built: size=9
+Group 18 built: size=6
+Group 19 built: size=7
+Group 20 built: size=6
+Group 21 built: size=6
+Group 22 built: size=5
+Group 23 built: size=5
+Group 24 built: size=4
+Group 25 built: size=6
+Group 26 built: size=4
+Group 27 built: size=4
+Group 28 built: size=3
+Group 29 built: size=2
+Group 30 built: size=2
+Group 31 built: size=3
+Group 32 built: size=3
+Group 33 built: size=4
+Group 34 built: size=3
+Group 35 built: size=5
+Group 36 built: size=3
+Group 37 built: size=2
+Group 38 built: size=2
+Group 39 built: size=3
+Group 40 built: size=4
+Group 41 built: size=4
+Group 42 built: size=3
+Group 43 built: size=3
+Group 44 built: size=4
+Group 45 built: size=4
+Group 46 built: size=2
+Group 47 built: size=3
+Group 48 built: size=2
+Group 49 built: size=4
+Group 50 built: size=4
+Group 51 built: size=4
+Group 52 built: size=3
+Group 53 built: size=2
+Group 54 built: size=4
+Group 55 built: size=4
+Group 56 built: size=2
+
+--- Result ---
+Non-empty groups merged: 57
+Approximate (scaled) count = 30834585369359162
+[Summary] n=3200 cap=200 eps=0.050 time=0.001896s final_n=60 gamma=0.003125 mode=det enum_merges=3199 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.112629 s
+Final merge phase: 0.001896 s
+Total (build+merge): 0.114524 s
+------------------------
+
+>>> Running n = 6400
+Scaling: eps=0.0500 gamma=0.001563 scaled_capacity=128000 mode=deterministic
+Grouping: n=6400 groups=80 base_group_size=80
+Group 0 built: size=29
+Group 1 built: size=58
+Group 2 built: size=51
+Group 3 built: size=50
+Group 4 built: size=45
+Group 5 built: size=59
+Group 6 built: size=36
+Group 7 built: size=33
+Group 8 built: size=35
+Group 9 built: size=27
+Group 10 built: size=19
+Group 11 built: size=22
+Group 12 built: size=19
+Group 13 built: size=13
+Group 14 built: size=18
+Group 15 built: size=9
+Group 16 built: size=11
+Group 17 built: size=13
+Group 18 built: size=9
+Group 19 built: size=7
+Group 20 built: size=8
+Group 21 built: size=10
+Group 22 built: size=10
+Group 23 built: size=11
+Group 24 built: size=10
+Group 25 built: size=9
+Group 26 built: size=8
+Group 27 built: size=5
+Group 28 built: size=6
+Group 29 built: size=5
+Group 30 built: size=7
+Group 31 built: size=6
+Group 32 built: size=4
+Group 33 built: size=7
+Group 34 built: size=6
+Group 35 built: size=6
+Group 36 built: size=5
+Group 37 built: size=6
+Group 38 built: size=5
+Group 39 built: size=3
+Group 40 built: size=2
+Group 41 built: size=2
+Group 42 built: size=3
+Group 43 built: size=3
+Group 44 built: size=2
+Group 45 built: size=2
+Group 46 built: size=3
+Group 47 built: size=3
+Group 48 built: size=4
+Group 49 built: size=2
+Group 50 built: size=4
+Group 51 built: size=4
+Group 52 built: size=4
+Group 53 built: size=2
+Group 54 built: size=2
+Group 55 built: size=2
+Group 56 built: size=2
+Group 57 built: size=4
+Group 58 built: size=2
+Group 59 built: size=3
+Group 60 built: size=4
+Group 61 built: size=4
+Group 62 built: size=2
+Group 63 built: size=2
+Group 64 built: size=2
+Group 65 built: size=2
+Group 66 built: size=3
+Group 67 built: size=2
+Group 68 built: size=4
+Group 69 built: size=2
+Group 70 built: size=3
+Group 71 built: size=4
+Group 72 built: size=3
+Group 73 built: size=3
+Group 74 built: size=2
+Group 75 built: size=3
+Group 76 built: size=4
+Group 77 built: size=3
+Group 78 built: size=2
+Group 79 built: size=3
+
+--- Result ---
+Non-empty groups merged: 80
+Approximate (scaled) count = 13345658002559982943338496
+[Summary] n=6400 cap=200 eps=0.050 time=0.005444s final_n=60 gamma=0.001563 mode=det enum_merges=6399 fft_merges=0
+
+--- Timing Breakdown ---
+Build phase: 0.463004 s
+Final merge phase: 0.005444 s
+Total (build+merge): 0.468449 s
+------------------------
+

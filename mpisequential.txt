@@ -1,0 +1,25 @@
+At n = 1000
+For Sequential Code 
+BUILD TIME = 0.23940 sec
+For MPI CODE
+for 2 processes , Build time = 0.009324
+for 4 processes , Build time = 0.008018
+for 8 processes , Build time = 0.004824
+
+At n = 5000
+For Sequential Code 
+BUILD TIME = 0.482018 sec
+For MPI CODE
+for 2 processes , Build time = 0.237604
+for 4 processes , Build time = 0.124380
+for 8 processes , Build time = 0.067554
+
+
+At n = 10000
+For Sequential Code 
+BUILD TIME = 2.0000 sec
+For MPI CODE
+for 2 processes , Build time = 0.986249
+for 4 processes , Build time = 0.621730
+for 8 processes , Build time = 0.677710
+

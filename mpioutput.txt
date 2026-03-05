@@ -1,0 +1,895 @@
+mpirun -np 1 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=1)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 0] Built groups: count=32 first=0 last=31 enum=968 fft=0 build_time=0.056329 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.001978 sec
+[Summary] n=1000 cap=200 eps=0.010 time=0.001978s final_n=50 gamma=0.002000 mode=det enum_merges=968 fft_merges=0 ranks=1 max_local_build=0.056329
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 0] Built groups: count=32 first=0 last=31 enum=968 fft=0 build_time=0.027139 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.000897 sec
+[Summary] n=1000 cap=200 eps=0.020 time=0.000897s final_n=50 gamma=0.004000 mode=det enum_merges=968 fft_merges=0 ranks=1 max_local_build=0.027139
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 0] Built groups: count=32 first=0 last=31 enum=968 fft=0 build_time=0.010729 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 147518418223
+Final DC merge time = 0.000369 sec
+[Summary] n=1000 cap=200 eps=0.050 time=0.000369s final_n=48 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=1 max_local_build=0.010729
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 0] Built groups: count=32 first=0 last=31 enum=968 fft=0 build_time=0.010702 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 104563167
+Final DC merge time = 0.000336 sec
+[Summary] n=1000 cap=200 eps=0.100 time=0.000336s final_n=30 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=1 max_local_build=0.010702
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+=>mpirun -np 2 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=2)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 1] Built groups: count=16 first=1 last=31 enum=472 fft=0 build_time=0.031351 s
+[Rank 0] Built groups: count=16 first=0 last=30 enum=496 fft=0 build_time=0.035714 s
+[Root] Received groups from rank 1: gcnt=16 total_entries=86
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.001997 sec
+[Summary] n=1000 cap=200 eps=0.010 time=0.001997s final_n=50 gamma=0.002000 mode=det enum_merges=968 fft_merges=0 ranks=2 max_local_build=0.035714
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 1] Built groups: count=16 first=1 last=31 enum=472 fft=0 build_time=0.013164 s
+[Rank 0] Built groups: count=16 first=0 last=30 enum=496 fft=0 build_time=0.013790 s
+[Root] Received groups from rank 1: gcnt=16 total_entries=86
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.000874 sec
+[Summary] n=1000 cap=200 eps=0.020 time=0.000874s final_n=50 gamma=0.004000 mode=det enum_merges=968 fft_merges=0 ranks=2 max_local_build=0.013790
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 1] Built groups: count=16 first=1 last=31 enum=472 fft=0 build_time=0.005198 s
+[Rank 0] Built groups: count=16 first=0 last=30 enum=496 fft=0 build_time=0.005529 s
+[Root] Received groups from rank 1: gcnt=16 total_entries=86
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 147518418223
+Final DC merge time = 0.000363 sec
+[Summary] n=1000 cap=200 eps=0.050 time=0.000363s final_n=48 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=2 max_local_build=0.005529
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 1] Built groups: count=16 first=1 last=31 enum=472 fft=0 build_time=0.005208 s
+[Rank 0] Built groups: count=16 first=0 last=30 enum=496 fft=0 build_time=0.005506 s
+[Root] Received groups from rank 1: gcnt=16 total_entries=86
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 104563167
+Final DC merge time = 0.000330 sec
+[Summary] n=1000 cap=200 eps=0.100 time=0.000330s final_n=30 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=2 max_local_build=0.005506
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 4 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=4)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 3] Built groups: count=8 first=3 last=31 enum=224 fft=0 build_time=0.020012 s
+[Rank 0] Built groups: count=8 first=0 last=28 enum=248 fft=0 build_time=0.020712 s
+[Rank 2] Built groups: count=8 first=2 last=30 enum=248 fft=0 build_time=0.021505 s
+[Rank 1] Built groups: count=8 first=1 last=29 enum=248 fft=0 build_time=0.025221 s
+[Root] Received groups from rank 1: gcnt=8 total_entries=51
+[Root] Received groups from rank 2: gcnt=8 total_entries=49
+[Root] Received groups from rank 3: gcnt=8 total_entries=35
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.002023 sec
+[Summary] n=1000 cap=200 eps=0.010 time=0.002023s final_n=50 gamma=0.002000 mode=det enum_merges=968 fft_merges=0 ranks=4 max_local_build=0.025221
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 3] Built groups: count=8 first=3 last=31 enum=224 fft=0 build_time=0.006978 s
+[Rank 0] Built groups: count=8 first=0 last=28 enum=248 fft=0 build_time=0.007767 s
+[Root] Received groups from rank 1: gcnt=8 total_entries=51
+[Root] Received groups from rank 2: gcnt=8 total_entries=49
+[Root] Received groups from rank 3: gcnt=8 total_entries=35
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.001003 sec
+[Summary] n=1000 cap=200 eps=0.020 time=0.001003s final_n=50 gamma=0.004000 mode=det enum_merges=968 fft_merges=0 ranks=4 max_local_build=0.007770
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 2] Built groups: count=8 first=2 last=30 enum=248 fft=0 build_time=0.007740 s
+[Rank 1] Built groups: count=8 first=1 last=29 enum=248 fft=0 build_time=0.007770 s
+[Rank 3] Built groups: count=8 first=3 last=31 enum=224 fft=0 build_time=0.002800 s
+[Rank 2] Built groups: count=8 first=2 last=30 enum=248 fft=0 build_time=0.003094 s
+[Rank 1] Built groups: count=8 first=1 last=29 enum=248 fft=0 build_time=0.003098 s
+[Rank 0] Built groups: count=8 first=0 last=28 enum=248 fft=0 build_time=0.003127 s
+[Root] Received groups from rank 1: gcnt=8 total_entries=51
+[Root] Received groups from rank 2: gcnt=8 total_entries=49
+[Root] Received groups from rank 3: gcnt=8 total_entries=35
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 147518418223
+Final DC merge time = 0.000401 sec
+[Summary] n=1000 cap=200 eps=0.050 time=0.000401s final_n=48 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=4 max_local_build=0.003127
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 3] Built groups: count=8 first=3 last=31 enum=224 fft=0 build_time=0.002635 s
+[Rank 2] Built groups: count=8 first=2 last=30 enum=248 fft=0 build_time=0.002932 s
+[Rank 1] Built groups: count=8 first=1 last=29 enum=248 fft=0 build_time=0.002944 s
+[Rank 0] Built groups: count=8 first=0 last=28 enum=248 fft=0 build_time=0.003024 s
+[Root] Received groups from rank 1: gcnt=8 total_entries=51
+[Root] Received groups from rank 2: gcnt=8 total_entries=49
+[Root] Received groups from rank 3: gcnt=8 total_entries=35
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 104563167
+Final DC merge time = 0.000359 sec
+[Summary] n=1000 cap=200 eps=0.100 time=0.000359s final_n=30 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=4 max_local_build=0.003024
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 8 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=8)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 6] Built groups: count=4 first=6 last=30 enum=124 fft=0 build_time=0.008550 s
+[Rank 3] Built groups: count=4 first=3 last=27 enum=124 fft=0 build_time=0.008565 s
+[Rank 5] Built groups: count=4 first=5 last=29 enum=124 fft=0 build_time=0.009443 s
+[Rank 2] Built groups: count=4 first=2 last=26 enum=124 fft=0 build_time=0.013422 s
+[Rank 7] Built groups: count=4 first=7 last=31 enum=100 fft=0 build_time=0.013970 s
+[Rank 1] Built groups: count=4 first=1 last=25 enum=124 fft=0 build_time=0.014049 s
+[Rank 4] Built groups: count=4 first=4 last=28 enum=124 fft=0 build_time=0.014289 s
+[Rank 0] Built groups: count=4 first=0 last=24 enum=124 fft=0 build_time=0.014554 s
+[Root] Received groups from rank 1: gcnt=4 total_entries=30
+[Root] Received groups from rank 2: gcnt=4 total_entries=28
+[Root] Received groups from rank 3: gcnt=4 total_entries=20
+[Root] Received groups from rank 4: gcnt=4 total_entries=19
+[Root] Received groups from rank 5: gcnt=4 total_entries=21
+[Root] Received groups from rank 6: gcnt=4 total_entries=21
+[Root] Received groups from rank 7: gcnt=4 total_entries=15
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.002595 sec
+[Summary] n=1000 cap=200 eps=0.010 time=0.002595s final_n=50 gamma=0.002000 mode=det enum_merges=968 fft_merges=0 ranks=8 max_local_build=0.014554
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 7] Built groups: count=4 first=7 last=31 enum=100 fft=0 build_time=0.003735 s
+[Rank 1] Built groups: count=4 first=1 last=25 enum=124 fft=0 build_time=0.004410 s
+[Rank 2] Built groups: count=4 first=2 last=26 enum=124 fft=0 build_time=0.004559 s
+[Rank 6] Built groups: count=4 first=6 last=30 enum=124 fft=0 build_time=0.004604 s
+[Rank 5] Built groups: count=4 first=5 last=29 enum=124 fft=0 build_time=0.004652 s
+[Rank 0] Built groups: count=4 first=0 last=24 enum=124 fft=0 build_time=0.004702 s
+[Rank 3] Built groups: count=4 first=3 last=27 enum=124 fft=0 build_time=0.004713 s
+[Root] Received groups from rank 1: gcnt=4 total_entries=30
+[Root] Received groups from rank 2: gcnt=4 total_entries=28
+[Root] Received groups from rank 3: gcnt=4 total_entries=20
+[Rank 4] Built groups: count=4 first=4 last=28 enum=124 fft=0 build_time=0.004878 s
+[Root] Received groups from rank 4: gcnt=4 total_entries=19
+[Root] Received groups from rank 5: gcnt=4 total_entries=21
+[Root] Received groups from rank 6: gcnt=4 total_entries=21
+[Root] Received groups from rank 7: gcnt=4 total_entries=15
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 210972364551
+Final DC merge time = 0.001449 sec
+[Summary] n=1000 cap=200 eps=0.020 time=0.001449s final_n=50 gamma=0.004000 mode=det enum_merges=968 fft_merges=0 ranks=8 max_local_build=0.004878
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 7] Built groups: count=4 first=7 last=31 enum=100 fft=0 build_time=0.001521 s
+[Rank 1] Built groups: count=4 first=1 last=25 enum=124 fft=0 build_time=0.001846 s
+[Rank 6] Built groups: count=4 first=6 last=30 enum=124 fft=0 build_time=0.001889 s
+[Rank 3] Built groups: count=4 first=3 last=27 enum=124 fft=0 build_time=0.001934 s
+[Rank 2] Built groups: count=4 first=2 last=26 enum=124 fft=0 build_time=0.001940 s
+[Rank 5] Built groups: count=4 first=5 last=29 enum=124 fft=0 build_time=0.001982 s
+[Rank 4] Built groups: count=4 first=4 last=28 enum=124 fft=0 build_time=0.002044 s
+[Rank 0] Built groups: count=4 first=0 last=24 enum=124 fft=0 build_time=0.002908 s
+[Root] Received groups from rank 1: gcnt=4 total_entries=30
+[Root] Received groups from rank 2: gcnt=4 total_entries=28
+[Root] Received groups from rank 3: gcnt=4 total_entries=20
+[Root] Received groups from rank 4: gcnt=4 total_entries=19
+[Root] Received groups from rank 5: gcnt=4 total_entries=21
+[Root] Received groups from rank 6: gcnt=4 total_entries=21
+[Root] Received groups from rank 7: gcnt=4 total_entries=15
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 147518418223
+Final DC merge time = 0.000447 sec
+[Summary] n=1000 cap=200 eps=0.050 time=0.000447s final_n=48 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=8 max_local_build=0.002908
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.010000 scaled_capacity=20000 mode=deterministic
+[Rank 7] Built groups: count=4 first=7 last=31 enum=100 fft=0 build_time=0.001286 s
+[Rank 1] Built groups: count=4 first=1 last=25 enum=124 fft=0 build_time=0.001611 s
+[Rank 2] Built groups: count=4 first=2 last=26 enum=124 fft=0 build_time=0.001618 s
+[Rank 4] Built groups: count=4 first=4 last=28 enum=124 fft=0 build_time=0.001627 s
+[Rank 3] Built groups: count=4 first=3 last=27 enum=124 fft=0 build_time=0.001676 s
+[Rank 6] Built groups: count=4 first=6 last=30 enum=124 fft=0 build_time=0.001673 s
+[Rank 5] Built groups: count=4 first=5 last=29 enum=124 fft=0 build_time=0.001667 s
+[Rank 0] Built groups: count=4 first=0 last=24 enum=124 fft=0 build_time=0.001744 s
+[Root] Received groups from rank 1: gcnt=4 total_entries=30
+[Root] Received groups from rank 2: gcnt=4 total_entries=28
+[Root] Received groups from rank 3: gcnt=4 total_entries=20
+[Root] Received groups from rank 4: gcnt=4 total_entries=19
+[Root] Received groups from rank 5: gcnt=4 total_entries=21
+[Root] Received groups from rank 6: gcnt=4 total_entries=21
+[Root] Received groups from rank 7: gcnt=4 total_entries=15
+
+--- Final Result (Root) ---
+Non-empty groups merged: 32
+Approximate (scaled) count = 104563167
+Final DC merge time = 0.000416 sec
+[Summary] n=1000 cap=200 eps=0.100 time=0.000416s final_n=30 gamma=0.010000 mode=det enum_merges=968 fft_merges=0 ranks=8 max_local_build=0.001744
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 1 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=1)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=2.780780 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 687836846976632728493684483114347266048
+Final DC merge time = 0.029214 sec
+[Summary] n=5000 cap=200 eps=0.010 time=0.029214s final_n=201 gamma=0.000400 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=2.780780
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000800 scaled_capacity=250000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=0.711891 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 4169214155031356377775284282195968
+Final DC merge time = 0.010416 sec
+[Summary] n=5000 cap=200 eps=0.020 time=0.010416s final_n=150 gamma=0.000800 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=0.711891
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=0.280618 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 1316695454387193172736
+Final DC merge time = 0.003864 sec
+[Summary] n=5000 cap=200 eps=0.050 time=0.003864s final_n=60 gamma=0.002000 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=0.280618
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=0.136811 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 318932029739033
+Final DC merge time = 0.001790 sec
+[Summary] n=5000 cap=200 eps=0.100 time=0.001790s final_n=30 gamma=0.004000 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=0.136811
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 2 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=2)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 1] Built groups: count=35 first=1 last=69 enum=2450 fft=0 build_time=2.610312 s
+[Rank 0] Built groups: count=36 first=0 last=70 enum=2479 fft=0 build_time=2.649899 s
+[Root] Received groups from rank 1: gcnt=35 total_entries=346
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 687836846976632728493684483114347266048
+Final DC merge time = 0.027974 sec
+[Summary] n=5000 cap=200 eps=0.010 time=0.027974s final_n=201 gamma=0.000400 mode=det enum_merges=4929 fft_merges=0 ranks=2 max_local_build=2.649899
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000800 scaled_capacity=250000 mode=deterministic
+[Rank 0] Built groups: count=36 first=0 last=70 enum=2479 fft=0 build_time=0.436706 s
+[Rank 1] Built groups: count=35 first=1 last=69 enum=2450 fft=0 build_time=0.443022 s
+[Root] Received groups from rank 1: gcnt=35 total_entries=346
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 4169214155031356377775284282195968
+Final DC merge time = 0.010138 sec
+[Summary] n=5000 cap=200 eps=0.020 time=0.010138s final_n=150 gamma=0.000800 mode=det enum_merges=4929 fft_merges=0 ranks=2 max_local_build=0.443022
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 1] Built groups: count=35 first=1 last=69 enum=2450 fft=0 build_time=0.139219 s
+[Rank 0] Built groups: count=36 first=0 last=70 enum=2479 fft=0 build_time=0.141054 s
+[Root] Received groups from rank 1: gcnt=35 total_entries=346
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 1316695454387193172736
+Final DC merge time = 0.003767 sec
+[Summary] n=5000 cap=200 eps=0.050 time=0.003767s final_n=60 gamma=0.002000 mode=det enum_merges=4929 fft_merges=0 ranks=2 max_local_build=0.141054
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 1] Built groups: count=35 first=1 last=69 enum=2450 fft=0 build_time=0.068080 s
+[Rank 0] Built groups: count=36 first=0 last=70 enum=2479 fft=0 build_time=0.068487 s
+[Root] Received groups from rank 1: gcnt=35 total_entries=346
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 318932029739033
+Final DC merge time = 0.001780 sec
+[Summary] n=5000 cap=200 eps=0.100 time=0.001780s final_n=30 gamma=0.004000 mode=det enum_merges=4929 fft_merges=0 ranks=2 max_local_build=0.068487
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MPI parallel knapsack starting (ranks=4)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 0] Built groups: count=18 first=0 last=68 enum=1260 fft=0 build_time=2.059413 s
+[Rank 2] Built groups: count=18 first=2 last=70 enum=1219 fft=0 build_time=2.154981 s
+[Rank 3] Built groups: count=17 first=3 last=67 enum=1190 fft=0 build_time=2.182143 s
+[Rank 1] Built groups: count=18 first=1 last=69 enum=1260 fft=0 build_time=2.211849 s
+[Root] Received groups from rank 1: gcnt=18 total_entries=179
+[Root] Received groups from rank 2: gcnt=18 total_entries=161
+[Root] Received groups from rank 3: gcnt=17 total_entries=167
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 687836846976632728493684483114347266048
+Final DC merge time = 0.030487 sec
+[Summary] n=5000 cap=200 eps=0.010 time=0.030487s final_n=201 gamma=0.000400 mode=det enum_merges=4929 fft_merges=0 ranks=4 max_local_build=2.211849
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000800 scaled_capacity=250000 mode=deterministic
+[Rank 3] Built groups: count=17 first=3 last=67 enum=1190 fft=0 build_time=0.240831 s
+[Rank 2] Built groups: count=18 first=2 last=70 enum=1219 fft=0 build_time=0.241809 s
+[Rank 1] Built groups: count=18 first=1 last=69 enum=1260 fft=0 build_time=0.242438 s
+[Rank 0] Built groups: count=18 first=0 last=68 enum=1260 fft=0 build_time=0.252266 s
+[Root] Received groups from rank 1: gcnt=18 total_entries=179
+[Root] Received groups from rank 2: gcnt=18 total_entries=161
+[Root] Received groups from rank 3: gcnt=17 total_entries=167
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 4169214155031356377775284282195968
+Final DC merge time = 0.010138 sec
+[Summary] n=5000 cap=200 eps=0.020 time=0.010138s final_n=150 gamma=0.000800 mode=det enum_merges=4929 fft_merges=0 ranks=4 max_local_build=0.252266
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 3] Built groups: count=17 first=3 last=67 enum=1190 fft=0 build_time=0.074107 s
+[Rank 2] Built groups: count=18 first=2 last=70 enum=1219 fft=0 build_time=0.075356 s
+[Rank 1] Built groups: count=18 first=1 last=69 enum=1260 fft=0 build_time=0.077972 s
+[Rank 0] Built groups: count=18 first=0 last=68 enum=1260 fft=0 build_time=0.077966 s
+[Root] Received groups from rank 1: gcnt=18 total_entries=179
+[Root] Received groups from rank 2: gcnt=18 total_entries=161
+[Root] Received groups from rank 3: gcnt=17 total_entries=167
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 1316695454387193172736
+Final DC merge time = 0.003833 sec
+[Summary] n=5000 cap=200 eps=0.050 time=0.003833s final_n=60 gamma=0.002000 mode=det enum_merges=4929 fft_merges=0 ranks=4 max_local_build=0.077972
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 3] Built groups: count=17 first=3 last=67 enum=1190 fft=0 build_time=0.036084 s
+[Rank 2] Built groups: count=18 first=2 last=70 enum=1219 fft=0 build_time=0.036869 s
+[Rank 0] Built groups: count=18 first=0 last=68 enum=1260 fft=0 build_time=0.037744 s
+[Root] Received groups from rank 1: gcnt=18 total_entries=179
+[Root] Received groups from rank 2: gcnt=18 total_entries=161
+[Root] Received groups from rank 3: gcnt=17 total_entries=167
+[Rank 1] Built groups: count=18 first=1 last=69 enum=1260 fft=0 build_time=0.037952 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 318932029739033
+Final DC merge time = 0.001773 sec
+[Summary] n=5000 cap=200 eps=0.100 time=0.001773s final_n=30 gamma=0.004000 mode=det enum_merges=4929 fft_merges=0 ranks=4 max_local_build=0.037952
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mpirun -np 8 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=8)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 7] Built groups: count=8 first=7 last=63 enum=560 fft=0 build_time=2.278346 s
+[Rank 6] Built groups: count=9 first=6 last=70 enum=589 fft=0 build_time=2.436671 s
+[Rank 2] Built groups: count=9 first=2 last=66 enum=630 fft=0 build_time=2.514863 s
+[Rank 0] Built groups: count=9 first=0 last=64 enum=630 fft=0 build_time=2.526283 s
+[Rank 3] Built groups: count=9 first=3 last=67 enum=630 fft=0 build_time=2.535196 s
+[Rank 1] Built groups: count=9 first=1 last=65 enum=630 fft=0 build_time=2.538460 s
+[Root] Received groups from rank 1: gcnt=9 total_entries=91
+[Root] Received groups from rank 2: gcnt=9 total_entries=90
+[Root] Received groups from rank 3: gcnt=9 total_entries=103
+[Rank 4] Built groups: count=9 first=4 last=68 enum=630 fft=0 build_time=2.542613 s
+[Root] Received groups from rank 4: gcnt=9 total_entries=90
+[Rank 5] Built groups: count=9 first=5 last=69 enum=630 fft=0 build_time=2.547157 s
+[Root] Received groups from rank 5: gcnt=9 total_entries=88
+[Root] Received groups from rank 6: gcnt=9 total_entries=71
+[Root] Received groups from rank 7: gcnt=8 total_entries=64
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 687836846976632728493684483114347266048
+Final DC merge time = 0.033422 sec
+[Summary] n=5000 cap=200 eps=0.010 time=0.033422s final_n=201 gamma=0.000400 mode=det enum_merges=4929 fft_merges=0 ranks=8 max_local_build=2.547157
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000800 scaled_capacity=250000 mode=deterministic
+[Rank 1] Built groups: count=9 first=1 last=65 enum=630 fft=0 build_time=0.137824 s
+[Rank 4] Built groups: count=9 first=4 last=68 enum=630 fft=0 build_time=0.238859 s
+[Rank 6] Built groups: count=9 first=6 last=70 enum=589 fft=0 build_time=0.358010 s
+[Rank 5] Built groups: count=9 first=5 last=69 enum=630 fft=0 build_time=0.358987 s
+[Rank 0] Built groups: count=9 first=0 last=64 enum=630 fft=0 build_time=0.459219 s
+[Root] Received groups from rank 1: gcnt=9 total_entries=91
+[Rank 7] Built groups: count=8 first=7 last=63 enum=560 fft=0 build_time=0.535268 s
+[Rank 3] Built groups: count=9 first=3 last=67 enum=630 fft=0 build_time=0.542300 s
+[Rank 2] Built groups: count=9 first=2 last=66 enum=630 fft=0 build_time=0.544298 s
+[Root] Received groups from rank 2: gcnt=9 total_entries=90
+[Root] Received groups from rank 3: gcnt=9 total_entries=103
+[Root] Received groups from rank 4: gcnt=9 total_entries=90
+[Root] Received groups from rank 5: gcnt=9 total_entries=88
+[Root] Received groups from rank 6: gcnt=9 total_entries=71
+[Root] Received groups from rank 7: gcnt=8 total_entries=64
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 4169214155031356377775284282195968
+Final DC merge time = 0.011489 sec
+[Summary] n=5000 cap=200 eps=0.020 time=0.011489s final_n=150 gamma=0.000800 mode=det enum_merges=4929 fft_merges=0 ranks=8 max_local_build=0.544298
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 7] Built groups: count=8 first=7 last=63 enum=560 fft=0 build_time=0.045028 s
+[Rank 6] Built groups: count=9 first=6 last=70 enum=589 fft=0 build_time=0.047627 s
+[Rank 5] Built groups: count=9 first=5 last=69 enum=630 fft=0 build_time=0.048598 s
+[Rank 4] Built groups: count=9 first=4 last=68 enum=630 fft=0 build_time=0.050029 s
+[Rank 1] Built groups: count=9 first=1 last=65 enum=630 fft=0 build_time=0.050061 s
+[Rank 2] Built groups: count=9 first=2 last=66 enum=630 fft=0 build_time=0.050861 s
+[Rank 3] Built groups: count=9 first=3 last=67 enum=630 fft=0 build_time=0.050957 s
+[Rank 0] Built groups: count=9 first=0 last=64 enum=630 fft=0 build_time=0.054684 s
+[Root] Received groups from rank 1: gcnt=9 total_entries=91
+[Root] Received groups from rank 2: gcnt=9 total_entries=90
+[Root] Received groups from rank 3: gcnt=9 total_entries=103
+[Root] Received groups from rank 4: gcnt=9 total_entries=90
+[Root] Received groups from rank 5: gcnt=9 total_entries=88
+[Root] Received groups from rank 6: gcnt=9 total_entries=71
+[Root] Received groups from rank 7: gcnt=8 total_entries=64
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 1316695454387193172736
+Final DC merge time = 0.004261 sec
+[Summary] n=5000 cap=200 eps=0.050 time=0.004261s final_n=60 gamma=0.002000 mode=det enum_merges=4929 fft_merges=0 ranks=8 max_local_build=0.054684
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 6] Built groups: count=9 first=6 last=70 enum=589 fft=0 build_time=0.021539 s
+[Rank 7] Built groups: count=8 first=7 last=63 enum=560 fft=0 build_time=0.022313 s
+[Rank 1] Built groups: count=9 first=1 last=65 enum=630 fft=0 build_time=0.022750 s
+[Rank 5] Built groups: count=9 first=5 last=69 enum=630 fft=0 build_time=0.022810 s
+[Rank 0] Built groups: count=9 first=0 last=64 enum=630 fft=0 build_time=0.022942 s
+[Rank 4] Built groups: count=9 first=4 last=68 enum=630 fft=0 build_time=0.022996 s
+[Root] Received groups from rank 1: gcnt=9 total_entries=91
+[Rank 2] Built groups: count=9 first=2 last=66 enum=630 fft=0 build_time=0.024047 s
+[Root] Received groups from rank 2: gcnt=9 total_entries=90
+[Rank 3] Built groups: count=9 first=3 last=67 enum=630 fft=0 build_time=0.024590 s
+[Root] Received groups from rank 3: gcnt=9 total_entries=103
+[Root] Received groups from rank 4: gcnt=9 total_entries=90
+[Root] Received groups from rank 5: gcnt=9 total_entries=88
+[Root] Received groups from rank 6: gcnt=9 total_entries=71
+[Root] Received groups from rank 7: gcnt=8 total_entries=64
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 318932029739033
+Final DC merge time = 0.002003 sec
+[Summary] n=5000 cap=200 eps=0.100 time=0.002003s final_n=30 gamma=0.004000 mode=det enum_merges=4929 fft_merges=0 ranks=8 max_local_build=0.024590
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 1 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=1)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=1.988002 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 687836846976632728493684483114347266048
+Final DC merge time = 0.029359 sec
+[Summary] n=5000 cap=200 eps=0.010 time=0.029359s final_n=201 gamma=0.000400 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=1.988002
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000800 scaled_capacity=250000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=0.723493 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 4169214155031356377775284282195968
+Final DC merge time = 0.010414 sec
+[Summary] n=5000 cap=200 eps=0.020 time=0.010414s final_n=150 gamma=0.000800 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=0.723493
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=0.283943 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 1316695454387193172736
+Final DC merge time = 0.003808 sec
+[Summary] n=5000 cap=200 eps=0.050 time=0.003808s final_n=60 gamma=0.002000 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=0.283943
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.004000 scaled_capacity=50000 mode=deterministic
+[Rank 0] Built groups: count=71 first=0 last=70 enum=4929 fft=0 build_time=0.137646 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 71
+Approximate (scaled) count = 318932029739033
+Final DC merge time = 0.001800 sec
+[Summary] n=5000 cap=200 eps=0.100 time=0.001800s final_n=30 gamma=0.004000 mode=det enum_merges=4929 fft_merges=0 ranks=1 max_local_build=0.137646
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mpirun -np 1 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=1)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000200 scaled_capacity=1000000 mode=deterministic
+[Rank 0] Built groups: count=100 first=0 last=99 enum=9900 fft=0 build_time=13.655532 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 736735635644687865757556851336974026345966213856791011262464
+Final DC merge time = 0.138945 sec
+[Summary] n=10000 cap=200 eps=0.010 time=0.138945s final_n=201 gamma=0.000200 mode=det enum_merges=9900 fft_merges=0 ranks=1 max_local_build=13.655532
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 0] Built groups: count=100 first=0 last=99 enum=9900 fft=0 build_time=3.877028 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 1975349326356624198826383300155521076679306450567168
+Final DC merge time = 0.040085 sec
+[Summary] n=10000 cap=200 eps=0.020 time=0.040085s final_n=150 gamma=0.000400 mode=det enum_merges=9900 fft_merges=0 ranks=1 max_local_build=3.877028
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.001000 scaled_capacity=200000 mode=deterministic
+[Rank 0] Built groups: count=100 first=0 last=99 enum=9900 fft=0 build_time=1.132333 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 13945126838811065320298160062464
+Final DC merge time = 0.010944 sec
+[Summary] n=10000 cap=200 eps=0.050 time=0.010944s final_n=60 gamma=0.001000 mode=det enum_merges=9900 fft_merges=0 ranks=1 max_local_build=1.132333
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 0] Built groups: count=100 first=0 last=99 enum=9900 fft=0 build_time=0.562007 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 652092946500700568768
+Final DC merge time = 0.005120 sec
+[Summary] n=10000 cap=200 eps=0.100 time=0.005120s final_n=30 gamma=0.002000 mode=det enum_merges=9900 fft_merges=0 ranks=1 max_local_build=0.562007
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 2 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=2)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000200 scaled_capacity=1000000 mode=deterministic
+[Rank 0] Built groups: count=50 first=0 last=98 enum=4950 fft=0 build_time=10.751788 s
+[Rank 1] Built groups: count=50 first=1 last=99 enum=4950 fft=0 build_time=10.804516 s
+[Root] Received groups from rank 1: gcnt=50 total_entries=497
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 736735635644687865757556851336974026345966213856791011262464
+Final DC merge time = 0.140419 sec
+[Summary] n=10000 cap=200 eps=0.010 time=0.140419s final_n=201 gamma=0.000200 mode=det enum_merges=9900 fft_merges=0 ranks=2 max_local_build=10.804516
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 0] Built groups: count=50 first=0 last=98 enum=4950 fft=0 build_time=5.289541 s
+[Rank 1] Built groups: count=50 first=1 last=99 enum=4950 fft=0 build_time=5.316637 s
+[Root] Received groups from rank 1: gcnt=50 total_entries=497
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 1975349326356624198826383300155521076679306450567168
+Final DC merge time = 0.040546 sec
+[Summary] n=10000 cap=200 eps=0.020 time=0.040546s final_n=150 gamma=0.000400 mode=det enum_merges=9900 fft_merges=0 ranks=2 max_local_build=5.316637
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.001000 scaled_capacity=200000 mode=deterministic
+[Rank 0] Built groups: count=50 first=0 last=98 enum=4950 fft=0 build_time=0.575683 s
+[Root] Received groups from rank 1: gcnt=50 total_entries=497
+[Rank 1] Built groups: count=50 first=1 last=99 enum=4950 fft=0 build_time=0.579857 s
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 13945126838811065320298160062464
+Final DC merge time = 0.010913 sec
+[Summary] n=10000 cap=200 eps=0.050 time=0.010913s final_n=60 gamma=0.001000 mode=det enum_merges=9900 fft_merges=0 ranks=2 max_local_build=0.579857
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 1] Built groups: count=50 first=1 last=99 enum=4950 fft=0 build_time=0.281212 s
+[Rank 0] Built groups: count=50 first=0 last=98 enum=4950 fft=0 build_time=0.281588 s
+[Root] Received groups from rank 1: gcnt=50 total_entries=497
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 652092946500700568768
+Final DC merge time = 0.005144 sec
+[Summary] n=10000 cap=200 eps=0.100 time=0.005144s final_n=30 gamma=0.002000 mode=det enum_merges=9900 fft_merges=0 ranks=2 max_local_build=0.281588
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 4 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=4)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000200 scaled_capacity=1000000 mode=deterministic
+[Rank 1] Built groups: count=25 first=1 last=97 enum=2475 fft=0 build_time=10.142391 s
+[Rank 3] Built groups: count=25 first=3 last=99 enum=2475 fft=0 build_time=10.880399 s
+[Rank 0] Built groups: count=25 first=0 last=96 enum=2475 fft=0 build_time=10.881529 s
+[Root] Received groups from rank 1: gcnt=25 total_entries=262
+[Rank 2] Built groups: count=25 first=2 last=98 enum=2475 fft=0 build_time=10.890156 s
+[Root] Received groups from rank 2: gcnt=25 total_entries=255
+[Root] Received groups from rank 3: gcnt=25 total_entries=235
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 736735635644687865757556851336974026345966213856791011262464
+Final DC merge time = 0.145895 sec
+[Summary] n=10000 cap=200 eps=0.010 time=0.145895s final_n=201 gamma=0.000200 mode=det enum_merges=9900 fft_merges=0 ranks=4 max_local_build=10.890156
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 0] Built groups: count=25 first=0 last=96 enum=2475 fft=0 build_time=4.966270 s
+[Rank 1] Built groups: count=25 first=1 last=97 enum=2475 fft=0 build_time=4.992734 s
+[Root] Received groups from rank 1: gcnt=25 total_entries=262
+[Rank 3] Built groups: count=25 first=3 last=99 enum=2475 fft=0 build_time=4.995939 s
+[Rank 2] Built groups: count=25 first=2 last=98 enum=2475 fft=0 build_time=4.999666 s
+[Root] Received groups from rank 2: gcnt=25 total_entries=255
+[Root] Received groups from rank 3: gcnt=25 total_entries=235
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 1975349326356624198826383300155521076679306450567168
+Final DC merge time = 0.042787 sec
+[Summary] n=10000 cap=200 eps=0.020 time=0.042787s final_n=150 gamma=0.000400 mode=det enum_merges=9900 fft_merges=0 ranks=4 max_local_build=4.999666
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.001000 scaled_capacity=200000 mode=deterministic
+[Rank 0] Built groups: count=25 first=0 last=96 enum=2475 fft=0 build_time=0.371415 s
+[Rank 3] Built groups: count=25 first=3 last=99 enum=2475 fft=0 build_time=0.371825 s
+[Rank 1] Built groups: count=25 first=1 last=97 enum=2475 fft=0 build_time=0.390431 s
+[Root] Received groups from rank 1: gcnt=25 total_entries=262
+[Rank 2] Built groups: count=25 first=2 last=98 enum=2475 fft=0 build_time=0.390981 s
+[Root] Received groups from rank 2: gcnt=25 total_entries=255
+[Root] Received groups from rank 3: gcnt=25 total_entries=235
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 13945126838811065320298160062464
+Final DC merge time = 0.013670 sec
+[Summary] n=10000 cap=200 eps=0.050 time=0.013670s final_n=60 gamma=0.001000 mode=det enum_merges=9900 fft_merges=0 ranks=4 max_local_build=0.390981
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 1] Built groups: count=25 first=1 last=97 enum=2475 fft=0 build_time=0.182575 s
+[Rank 3] Built groups: count=25 first=3 last=99 enum=2475 fft=0 build_time=0.182822 s
+[Rank 2] Built groups: count=25 first=2 last=98 enum=2475 fft=0 build_time=0.183244 s
+[Rank 0] Built groups: count=25 first=0 last=96 enum=2475 fft=0 build_time=0.183507 s
+[Root] Received groups from rank 1: gcnt=25 total_entries=262
+[Root] Received groups from rank 2: gcnt=25 total_entries=255
+[Root] Received groups from rank 3: gcnt=25 total_entries=235
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 652092946500700568768
+Final DC merge time = 0.006581 sec
+[Summary] n=10000 cap=200 eps=0.100 time=0.006581s final_n=30 gamma=0.002000 mode=det enum_merges=9900 fft_merges=0 ranks=4 max_local_build=0.183507
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mpirun -np 8 ./mpicode sweep csv
+MPI parallel knapsack starting (ranks=8)
+MPI_Wtick() resolution: 0.000000001 sec
+
+
+--- Parameter Sweep (eps) Mode ---
+Mode = Deterministic
+
+==== Running with eps = 0.010 ====
+Scaling: eps=0.0100 gamma=0.000200 scaled_capacity=1000000 mode=deterministic
+[Rank 5] Built groups: count=12 first=5 last=93 enum=1188 fft=0 build_time=9.844634 s
+[Rank 4] Built groups: count=12 first=4 last=92 enum=1188 fft=0 build_time=9.861668 s
+[Rank 7] Built groups: count=12 first=7 last=95 enum=1188 fft=0 build_time=10.039891 s
+[Rank 6] Built groups: count=12 first=6 last=94 enum=1188 fft=0 build_time=10.126578 s
+[Rank 0] Built groups: count=13 first=0 last=96 enum=1287 fft=0 build_time=10.363760 s
+[Rank 2] Built groups: count=13 first=2 last=98 enum=1287 fft=0 build_time=10.423631 s
+[Rank 1] Built groups: count=13 first=1 last=97 enum=1287 fft=0 build_time=10.497822 s
+[Root] Received groups from rank 1: gcnt=13 total_entries=140
+[Root] Received groups from rank 2: gcnt=13 total_entries=140
+[Rank 3] Built groups: count=13 first=3 last=99 enum=1287 fft=0 build_time=10.592975 s
+[Root] Received groups from rank 3: gcnt=13 total_entries=135
+[Root] Received groups from rank 4: gcnt=12 total_entries=133
+[Root] Received groups from rank 5: gcnt=12 total_entries=122
+[Root] Received groups from rank 6: gcnt=12 total_entries=115
+[Root] Received groups from rank 7: gcnt=12 total_entries=100
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 736735635644687865757556851336974026345966213856791011262464
+Final DC merge time = 0.174616 sec
+[Summary] n=10000 cap=200 eps=0.010 time=0.174616s final_n=201 gamma=0.000200 mode=det enum_merges=9900 fft_merges=0 ranks=8 max_local_build=10.592975
+
+==== Running with eps = 0.020 ====
+Scaling: eps=0.0200 gamma=0.000400 scaled_capacity=500000 mode=deterministic
+[Rank 5] Built groups: count=12 first=5 last=93 enum=1188 fft=0 build_time=4.483580 s
+[Rank 0] Built groups: count=13 first=0 last=96 enum=1287 fft=0 build_time=4.926109 s
+[Rank 2] Built groups: count=13 first=2 last=98 enum=1287 fft=0 build_time=4.973560 s
+[Rank 7] Built groups: count=12 first=7 last=95 enum=1188 fft=0 build_time=5.199174 s
+[Rank 6] Built groups: count=12 first=6 last=94 enum=1188 fft=0 build_time=5.228629 s
+[Rank 3] Built groups: count=13 first=3 last=99 enum=1287 fft=0 build_time=5.303405 s
+[Rank 4] Built groups: count=12 first=4 last=92 enum=1188 fft=0 build_time=5.306758 s
+[Rank 1] Built groups: count=13 first=1 last=97 enum=1287 fft=0 build_time=5.314253 s
+[Root] Received groups from rank 1: gcnt=13 total_entries=140
+[Root] Received groups from rank 2: gcnt=13 total_entries=140
+[Root] Received groups from rank 3: gcnt=13 total_entries=135
+[Root] Received groups from rank 4: gcnt=12 total_entries=133
+[Root] Received groups from rank 5: gcnt=12 total_entries=122
+[Root] Received groups from rank 6: gcnt=12 total_entries=115
+[Root] Received groups from rank 7: gcnt=12 total_entries=100
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 1975349326356624198826383300155521076679306450567168
+Final DC merge time = 0.046997 sec
+[Summary] n=10000 cap=200 eps=0.020 time=0.046997s final_n=150 gamma=0.000400 mode=det enum_merges=9900 fft_merges=0 ranks=8 max_local_build=5.314253
+
+==== Running with eps = 0.050 ====
+Scaling: eps=0.0500 gamma=0.001000 scaled_capacity=200000 mode=deterministic
+[Rank 7] Built groups: count=12 first=7 last=95 enum=1188 fft=0 build_time=0.399823 s
+[Rank 0] Built groups: count=13 first=0 last=96 enum=1287 fft=0 build_time=0.440093 s
+[Rank 1] Built groups: count=13 first=1 last=97 enum=1287 fft=0 build_time=0.446063 s
+[Root] Received groups from rank 1: gcnt=13 total_entries=140
+[Rank 5] Built groups: count=12 first=5 last=93 enum=1188 fft=0 build_time=0.447768 s
+[Rank 4] Built groups: count=12 first=4 last=92 enum=1188 fft=0 build_time=0.492837 s
+[Rank 2] Built groups: count=13 first=2 last=98 enum=1287 fft=0 build_time=0.493132 s
+[Root] Received groups from rank 2: gcnt=13 total_entries=140
+[Rank 6] Built groups: count=12 first=6 last=94 enum=1188 fft=0 build_time=0.506556 s
+[Rank 3] Built groups: count=13 first=3 last=99 enum=1287 fft=0 build_time=0.554498 s
+[Root] Received groups from rank 3: gcnt=13 total_entries=135
+[Root] Received groups from rank 4: gcnt=12 total_entries=133
+[Root] Received groups from rank 5: gcnt=12 total_entries=122
+[Root] Received groups from rank 6: gcnt=12 total_entries=115
+[Root] Received groups from rank 7: gcnt=12 total_entries=100
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 13945126838811065320298160062464
+Final DC merge time = 0.014524 sec
+[Summary] n=10000 cap=200 eps=0.050 time=0.014524s final_n=60 gamma=0.001000 mode=det enum_merges=9900 fft_merges=0 ranks=8 max_local_build=0.554498
+
+==== Running with eps = 0.100 ====
+Scaling: eps=0.1000 gamma=0.002000 scaled_capacity=100000 mode=deterministic
+[Rank 7] Built groups: count=12 first=7 last=95 enum=1188 fft=0 build_time=0.095905 s
+[Rank 5] Built groups: count=12 first=5 last=93 enum=1188 fft=0 build_time=0.096064 s
+[Rank 6] Built groups: count=12 first=6 last=94 enum=1188 fft=0 build_time=0.099112 s
+[Rank 4] Built groups: count=12 first=4 last=92 enum=1188 fft=0 build_time=0.100594 s
+[Rank 1] Built groups: count=13 first=1 last=97 enum=1287 fft=0 build_time=0.103597 s
+[Rank 2] Built groups: count=13 first=2 last=98 enum=1287 fft=0 build_time=0.109290 s
+[Rank 0] Built groups: count=13 first=0 last=96 enum=1287 fft=0 build_time=0.140524 s
+[Root] Received groups from rank 1: gcnt=13 total_entries=140
+[Root] Received groups from rank 2: gcnt=13 total_entries=140
+[Rank 3] Built groups: count=13 first=3 last=99 enum=1287 fft=0 build_time=0.162378 s
+[Root] Received groups from rank 3: gcnt=13 total_entries=135
+[Root] Received groups from rank 4: gcnt=12 total_entries=133
+[Root] Received groups from rank 5: gcnt=12 total_entries=122
+[Root] Received groups from rank 6: gcnt=12 total_entries=115
+[Root] Received groups from rank 7: gcnt=12 total_entries=100
+
+--- Final Result (Root) ---
+Non-empty groups merged: 100
+Approximate (scaled) count = 652092946500700568768
+Final DC merge time = 0.006686 sec
+[Summary] n=10000 cap=200 eps=0.100 time=0.006686s final_n=30 gamma=0.002000 mode=det enum_merges=9900 fft_merges=0 ranks=8 max_local_build=0.162378
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

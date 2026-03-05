@@ -1,0 +1,330 @@
+%%bash
+cat > hybrid_final_ready.cu << 'EOF'
+// hybrid_final_ready.cu
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <cuda.h>
+#include <cufft.h>
+
+#define DEFAULT_N       1000
+#define DEFAULT_CAP     200
+#define DEFAULT_NA      8192
+#define DEFAULT_NB      8192
+#define DEFAULT_MAX_W   200
+
+static double now_seconds(void){
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    return t.tv_sec + t.tv_nsec * 1e-9;
+}
+
+#define CHECK_CUDA(call) do { cudaError_t e=(call); if(e!=cudaSuccess){ \
+    fprintf(stderr,"CUDA ERROR %s:%d: %s\n",__FILE__,__LINE__,cudaGetErrorString(e)); exit(1);} } while(0)
+
+#define CHECK_CUFFT(call, ctx) do { cufftResult r=(call); if(r!=CUFFT_SUCCESS){ \
+    fprintf(stderr,"CUFFT ERROR %s:%d ctx=%s code=%d\n",__FILE__,__LINE__,(ctx),(int)r); exit(1);} } while(0)
+
+// Generate random items (weights and profits)
+static void generate_items(int *w, int *p, int n, int max_w, int max_p){
+    srand(42);
+    for(int i=0;i<n;i++){
+        w[i]=(rand()%max_w)+1;
+        p[i]=(rand()%max_p)+1;
+    }
+}
+
+// CPU naive convolution
+static void cpu_naive_convolve(const double *a,int na,const double *b,int nb,double *out,int nc){
+    for(int k=0;k<nc;k++){
+        double s=0.0;
+        int i0=(k-(nb-1))>0?(k-(nb-1)):0;
+        int i1=(k<(na-1))?k:(na-1);
+        for(int i=i0;i<=i1;i++) s+=a[i]*b[k-i];
+        out[k]=s;
+    }
+}
+
+// CUDA kernel: pointwise complex multiply + scaling
+__global__ static void pointwise_mul_and_scale_kernel(cufftDoubleComplex *A,const cufftDoubleComplex *B,int Nc,double scale){
+    int tid=blockIdx.x*blockDim.x+threadIdx.x;
+    if(tid>=Nc)return;
+    cufftDoubleComplex a=A[tid], b=B[tid], c;
+    c.x=(a.x*b.x - a.y*b.y)*scale;
+    c.y=(a.x*b.y + a.y*b.x)*scale;
+    A[tid]=c;
+}
+
+// GPU FFT convolution (with per-phase timing and normalization fix)
+int gpu_fft_convolve_timed(const double *h_a,int na,const double *h_b,int nb,double *h_out,
+                           float *ms_fft,float *ms_kern,float *ms_ifft,float *ms_d2h,
+                           float *ms_total,float *ms_kernel_only)
+{
+    int needed=na+nb-1;
+    int N=1; while(N<needed) N<<=1;
+    int Nc=N/2+1;
+
+    size_t real_bytes=sizeof(double)*N;
+    size_t comp_bytes=sizeof(cufftDoubleComplex)*Nc;
+
+    double *h_padA=(double*)malloc(real_bytes);
+    double *h_padB=(double*)malloc(real_bytes);
+    for(int i=0;i<N;i++){ h_padA[i]=(i<na)?h_a[i]:0.0; h_padB[i]=(i<nb)?h_b[i]:0.0; }
+
+    double *d_a,*d_b; cufftDoubleComplex *d_Af,*d_Bf;
+    CHECK_CUDA(cudaMalloc(&d_a,real_bytes));
+    CHECK_CUDA(cudaMalloc(&d_b,real_bytes));
+    CHECK_CUDA(cudaMalloc(&d_Af,comp_bytes));
+    CHECK_CUDA(cudaMalloc(&d_Bf,comp_bytes));
+
+    CHECK_CUDA(cudaMemcpy(d_a,h_padA,real_bytes,cudaMemcpyHostToDevice));
+    CHECK_CUDA(cudaMemcpy(d_b,h_padB,real_bytes,cudaMemcpyHostToDevice));
+
+    cufftHandle planR2C,planC2R;
+    CHECK_CUFFT(cufftPlan1d(&planR2C,N,CUFFT_D2Z,1),"planR2C");
+    CHECK_CUFFT(cufftPlan1d(&planC2R,N,CUFFT_Z2D,1),"planC2R");
+
+    // Warm-up to remove JIT and plan overheads
+    CHECK_CUFFT(cufftExecD2Z(planR2C,d_a,d_Af),"warm-up forward");
+    CHECK_CUFFT(cufftExecZ2D(planC2R,d_Af,d_a),"warm-up inverse");
+    CHECK_CUDA(cudaDeviceSynchronize());
+
+    cudaEvent_t e_start,e_fft,e_k1,e_k2,e_ifft,e_d2h,e_end;
+    CHECK_CUDA(cudaEventCreate(&e_start));
+    CHECK_CUDA(cudaEventCreate(&e_fft));
+    CHECK_CUDA(cudaEventCreate(&e_k1));
+    CHECK_CUDA(cudaEventCreate(&e_k2));
+    CHECK_CUDA(cudaEventCreate(&e_ifft));
+    CHECK_CUDA(cudaEventCreate(&e_d2h));
+    CHECK_CUDA(cudaEventCreate(&e_end));
+
+    CHECK_CUDA(cudaEventRecord(e_start));
+
+    // FFT forward
+    CHECK_CUFFT(cufftExecD2Z(planR2C,d_a,d_Af),"fft A");
+    CHECK_CUFFT(cufftExecD2Z(planR2C,d_b,d_Bf),"fft B");
+    CHECK_CUDA(cudaEventRecord(e_fft));
+
+    // Pointwise multiply
+    int threads=256,blocks=(Nc+threads-1)/threads;
+    double scale=1.0/(double)N;
+    CHECK_CUDA(cudaEventRecord(e_k1));
+    pointwise_mul_and_scale_kernel<<<blocks,threads>>>(d_Af,d_Bf,Nc,scale);
+    CHECK_CUDA(cudaGetLastError());
+    CHECK_CUDA(cudaEventRecord(e_k2));
+
+    // Inverse FFT
+    CHECK_CUFFT(cufftExecZ2D(planC2R,d_Af,d_a),"ifft");
+    CHECK_CUDA(cudaEventRecord(e_ifft));
+
+    // Copy back and normalize (IFFT unnormalized)
+    CHECK_CUDA(cudaMemcpy(h_padA,d_a,sizeof(double)*needed,cudaMemcpyDeviceToHost));
+    for(int i=0;i<needed;i++) h_padA[i]/=(double)N;
+    CHECK_CUDA(cudaEventRecord(e_d2h));
+    CHECK_CUDA(cudaEventRecord(e_end));
+    CHECK_CUDA(cudaEventSynchronize(e_end));
+
+    CHECK_CUDA(cudaEventElapsedTime(ms_fft,e_start,e_fft));
+    CHECK_CUDA(cudaEventElapsedTime(ms_kern,e_fft,e_k2));
+    CHECK_CUDA(cudaEventElapsedTime(ms_kernel_only,e_k1,e_k2));
+    CHECK_CUDA(cudaEventElapsedTime(ms_ifft,e_k2,e_ifft));
+    CHECK_CUDA(cudaEventElapsedTime(ms_d2h,e_ifft,e_d2h));
+    CHECK_CUDA(cudaEventElapsedTime(ms_total,e_start,e_end));
+
+    for(int i=0;i<needed;i++) h_out[i]=h_padA[i];
+
+    cufftDestroy(planR2C); cufftDestroy(planC2R);
+    CHECK_CUDA(cudaFree(d_a)); CHECK_CUDA(cudaFree(d_b));
+    CHECK_CUDA(cudaFree(d_Af)); CHECK_CUDA(cudaFree(d_Bf));
+    free(h_padA); free(h_padB);
+    return 0;
+}
+
+int main(int argc,char **argv){
+    int n=DEFAULT_N,cap=DEFAULT_CAP,na=DEFAULT_NA,nb=DEFAULT_NB;
+    if(argc>=2)n=atoi(argv[1]);
+    if(argc>=3)cap=atoi(argv[2]);
+    if(argc>=4)na=atoi(argv[3]);
+    if(argc>=5)nb=atoi(argv[4]);
+
+    double prog_start=now_seconds();
+
+    int *w=(int*)malloc(sizeof(int)*n);
+    int *p=(int*)malloc(sizeof(int)*n);
+    generate_items(w,p,n,DEFAULT_MAX_W,20);
+    printf("Generated %d items, capacity=%d, max_w=%d\n",n,cap,DEFAULT_MAX_W);
+    for(int i=0;i<10 && i<n;i++) printf(" item %3d: w=%3d p=%3d\n",i,w[i],p[i]);
+    printf("\n");
+
+    int nc=na+nb-1;
+    double *a=(double*)malloc(sizeof(double)*na);
+    double *b=(double*)malloc(sizeof(double)*nb);
+    double *out_cpu=(double*)malloc(sizeof(double)*nc);
+    double *out_gpu=(double*)malloc(sizeof(double)*nc);
+
+    for(int i=0;i<na;i++) a[i]=sin(i*0.01);
+    for(int i=0;i<nb;i++) b[i]=cos(i*0.005);
+
+    // CPU reference
+    double t0=now_seconds();
+    cpu_naive_convolve(a,na,b,nb,out_cpu,nc);
+    double t_cpu=now_seconds()-t0;
+
+    float ms_fft=0,ms_kern=0,ms_ifft=0,ms_d2h=0,ms_total=0,ms_kernel_only=0;
+    double t1=now_seconds();
+    gpu_fft_convolve_timed(a,na,b,nb,out_gpu,&ms_fft,&ms_kern,&ms_ifft,&ms_d2h,&ms_total,&ms_kernel_only);
+    double t_gpu_host=now_seconds()-t1;
+
+    double max_abs=0,sum_sq=0,norm=0;
+    for(int i=0;i<nc;i++){
+        double d=out_cpu[i]-out_gpu[i];
+        double ad=fabs(d);
+        if(ad>max_abs)max_abs=ad;
+        sum_sq+=d*d; norm+=out_cpu[i]*out_cpu[i];
+    }
+    double rms=sqrt(sum_sq/nc);
+    double rel_rms=(norm>0)?rms/sqrt(norm/nc):0;
+
+    double prog_end=now_seconds();
+
+    printf("=== Timing (per-phase measured with cudaEvents) ===\n");
+    printf("FFT  = %.3f ms\n",ms_fft);
+    printf("KERN = %.3f ms\n",ms_kern);
+    printf("KERN-only = %.3f ms\n",ms_kernel_only);
+    printf("IFFT = %.3f ms\n",ms_ifft);
+    printf("D2H  = %.3f ms\n",ms_d2h);
+    printf("GPU wall (cuda events sum) = %.6f s\n",ms_total/1000.0f);
+    printf("CPU (naive) = %.6f s\n",t_cpu);
+    printf("GPU wall measured (host) = %.6f s\n",t_gpu_host);
+    printf("Speedup (CPU/GPU_event_wall) = %.2fx\n",t_cpu/(ms_total/1000.0f));
+    printf("Speedup (CPU/GPU_host_time) = %.2fx\n",t_cpu/t_gpu_host);
+
+    printf("\n=== Verification (first 16 results) ===\n");
+    for(int i=0;i<16 && i<nc;i++) printf("[%2d] CPU=%.6f  GPU=%.6f\n",i,out_cpu[i],out_gpu[i]);
+    printf("\nMax abs diff: %.6e RMS: %.6e RelRMS: %.6e\n",max_abs,rms,rel_rms);
+
+    printf("\n--- Summary ---\n");
+    printf("n=%d cap=%d na=%d nb=%d total_nc=%d\n",n,cap,na,nb,nc);
+    printf("time_cpu=%.6fs time_gpu_eventsum=%.6fs time_gpu_host=%.6fs program_time=%.6fs\n",
+           t_cpu,ms_total/1000.0f,t_gpu_host,prog_end-prog_start);
+
+    free(w); free(p); free(a); free(b); free(out_cpu); free(out_gpu);
+    return 0;
+}
+EOF
+
+
+
+
+
+# Compile & run
+!nvcc -O3 -arch=sm_75 -lcufft hybrid_final_ready.cu -o hybrid_final_ready
+!echo -e "\n=== RUN: default ==="
+!./hybrid_final_ready || true
+
+!echo -e "\n=== RUN: larger example ==="
+!./hybrid_final_ready 1000 200 16384 16384 || true
+
+
+
+
+
+=== RUN: default ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.972 ms
+KERN = 0.036 ms
+KERN-only = 0.034 ms
+IFFT = 0.487 ms
+D2H  = 0.065 ms
+GPU wall (cuda events sum) = 0.001563 s
+CPU (naive) = 0.084904 s
+GPU wall measured (host) = 0.119410 s
+Speedup (CPU/GPU_event_wall) = 54.31x
+Speedup (CPU/GPU_host_time) = 0.71x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 2.131628e-12 RMS: 3.629136e-13 RelRMS: 2.735043e-15
+
+--- Summary ---
+n=1000 cap=200 na=8192 nb=8192 total_nc=16383
+time_cpu=0.084904s time_gpu_eventsum=0.001563s time_gpu_host=0.119410s program_time=0.204769s
+
+=== RUN: larger example ===
+Generated 1000 items, capacity=200, max_w=200
+ item   0: w=167 p=  1
+ item   1: w= 82 p=  2
+ item   2: w= 13 p= 19
+ item   3: w= 22 p=  1
+ item   4: w=136 p=  4
+ item   5: w= 75 p=  4
+ item   6: w=118 p=  5
+ item   7: w= 97 p=  3
+ item   8: w= 93 p=  9
+ item   9: w= 99 p= 20
+
+=== Timing (per-phase measured with cudaEvents) ===
+FFT  = 0.339 ms
+KERN = 0.034 ms
+KERN-only = 0.031 ms
+IFFT = 0.172 ms
+D2H  = 0.115 ms
+GPU wall (cuda events sum) = 0.000662 s
+CPU (naive) = 0.340012 s
+GPU wall measured (host) = 0.080725 s
+Speedup (CPU/GPU_event_wall) = 513.53x
+Speedup (CPU/GPU_host_time) = 4.21x
+
+=== Verification (first 16 results) ===
+[ 0] CPU=0.000000  GPU=-0.000000
+[ 1] CPU=0.010000  GPU=0.010000
+[ 2] CPU=0.029998  GPU=0.029998
+[ 3] CPU=0.059993  GPU=0.059993
+[ 4] CPU=0.099981  GPU=0.099981
+[ 5] CPU=0.149956  GPU=0.149956
+[ 6] CPU=0.209913  GPU=0.209913
+[ 7] CPU=0.279845  GPU=0.279845
+[ 8] CPU=0.359742  GPU=0.359742
+[ 9] CPU=0.449595  GPU=0.449595
+[10] CPU=0.549393  GPU=0.549393
+[11] CPU=0.659123  GPU=0.659123
+[12] CPU=0.778772  GPU=0.778772
+[13] CPU=0.908325  GPU=0.908325
+[14] CPU=1.047766  GPU=1.047766
+[15] CPU=1.197077  GPU=1.197077
+
+Max abs diff: 3.311129e-12 RMS: 5.087448e-13 RelRMS: 3.918382e-15
+
+--- Summary ---
+n=1000 cap=200 na=16384 nb=16384 total_nc=32767
+time_cpu=0.340012s time_gpu_eventsum=0.000662s time_gpu_host=0.080725s program_time=0.421460s
