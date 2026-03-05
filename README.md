@@ -1,3 +1,5 @@
+The individual code files are available in MASTER branch of this repo. In case you don't want to see all the result,screenshots and all.
+
 Parallel Implementation of Sub-quadratic time
 Approximate Counting of 0-1 Knapsack Problem
 
